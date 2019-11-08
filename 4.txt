@@ -1,0 +1,26 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<vector<int>> dig_trench(vector<vector<int>> Trench) 
+{
+	for (int i = 0; i < Trench.size(); ++i) 
+		for (int j = 0; j < Trench.size(); ++j) 
+			Trench[i][j] = abs(i - j);
+	return Trench;
+}
+
+int main() 
+{
+	int n;
+	cin >> n;
+	vector<vector<int>> Trench(n, vector<int>(n));
+	Trench = dig_trench(Trench);
+	for (int i = 0; i < n; ++i) 
+	{
+		for (int j = 0; j < n; ++j)
+			cout << Trench[i][j] << " ";
+		cout << endl;
+	}
+	return 0;
+}
