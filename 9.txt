@@ -1,0 +1,24 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<int> arr;
+
+int PrefSum(int l, int r) 
+{
+	if (r != l)
+		return PrefSum(l, (r + l) / 2) + PrefSum((r + l) / 2 + 1, r);
+	else
+		return arr[r];
+}
+
+int main() 
+{
+	int n;
+	cin >> n;
+	arr.resize(n);
+	for (int i = 0; i < n; ++i)
+		cin >> arr[i];
+	cout << PrefSum(0, n - 1);
+	return 0;
+}
