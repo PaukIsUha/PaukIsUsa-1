@@ -1,4 +1,3 @@
-// vector standard header
 #pragma once
 #ifndef _VECTOR_
 #define _VECTOR_
@@ -2884,8 +2883,3 @@ _STL_RESTORE_CLANG_WARNINGS
 #pragma pack(pop)
 #endif // RC_INVOKED
 #endif // _VECTOR_
-
-/*
- * Copyright (c) by P.J. Plauger. All rights reserved.
- * Consult your license regarding permissions and restrictions.
-V6.50:0009 */
