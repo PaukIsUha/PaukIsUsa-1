@@ -1,0 +1,82 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> put_snake(vector<vector<int>> Snake) 
+{
+	int l = 0, r = Snake[0].size() - 1, u = 0, d = Snake.size() - 1;
+	int count = 1;
+	int i = 0, j = Snake[0].size() - 1, worm = 3;
+	while (count <= Snake.size() * Snake[0].size())
+	{
+		Snake[i][j] = count;
+		switch (worm)
+		{
+			case 3:
+			{
+				--j;
+				if (j < l) 
+				{
+					worm = 2;
+					j = l;
+					++i;
+					++u;
+				}
+				break;
+			}
+			case 2:
+			{
+				++i;
+				if (i > d) 
+				{
+					worm = 1;
+					i = d;
+					++j;
+					++l;
+				}
+				break;
+			}
+			case 1:
+			{
+				++j;
+				if (j > r) 
+				{
+					worm = 0;
+					j = r;
+					--i;
+					--d;
+				}
+				break;
+			}
+			case 0:
+			{
+				--i;
+				if (i < u) 
+				{
+					worm = 3;
+					i = u;
+					--j;
+					--r;
+				}
+				break;
+			}
+		}
+		++count;
+	}
+	return Snake;
+}
+
+int main() 
+{
+	int n, m;
+	cin >> n >> m;
+	vector<vector<int>> arr(n, vector<int>(m));
+	arr = put_snake(arr);
+	for (int i = 0; i < n; ++i) 
+	{
+		for (int j = 0; j < m; ++j)
+			cout << arr[i][j] << "\t";
+		cout << "\n";
+	}
+	return 0;
+}

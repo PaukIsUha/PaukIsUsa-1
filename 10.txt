@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> prefix;
+
+void MiX(int n) 
+{
+	int mx;
+	for (mx = 1; mx * mx * mx <= n; ++mx);
+	--mx;
+	prefix.push_back(mx);
+	if (mx * mx * mx != n && prefix.size() <= 8)
+		MiX(n - mx * mx * mx);
+}
+
+int main() 
+{	
+	int n;
+	cin >> n;
+	MiX(n);
+	if (prefix.size() > 8)
+		cout << "Impossible";
+	else
+		for (auto now : prefix)
+			cout << now << " ";
+	return 0;
+}
